@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('tanggapans', function (Blueprint $table) {
             $table->id('id_tanggapan');
-            $table->foreignId('id_pengaduan')->refrences('id_pengaduan')->on('pengaduans');
+            $table->foreignId('id_pengaduan')->references('id_pengaduan')->on('pengaduans');
             $table->date('tgl_tanggapan');
             $table->text('tanggapan');
-            $table->foreignId('id_petugas')->refrences('id_petugas')->on('petugass');
+            $table->foreignId('id_petugas')->references('id_petugas')->on('petugass');
             $table->timestamps();
         });
     }

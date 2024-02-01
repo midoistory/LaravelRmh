@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class PetugasSeeder extends Seeder
 {
@@ -14,14 +13,20 @@ class PetugasSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        DB::table('petugass')->insert([
-            'id_petugas'   => random_int(1, 16),
-            'nama_petugas' => Str::random(35),
-            'username'     => Str::random(25),
-            'password'     => Str::random(32),
-            'telp'         => Str::random(13),
-            'level'        => 'admin,petugas', 
-        ]);
+        $faker = Faker::create();
+
+        foreach(range(1, 3)as $index){
+            // membuat nilai id_petugas yang unik
+            $uniquesIdPetugas = $faker->unique()->numerify('###########');
+
+            DB::table('petugass')->insert([
+                'id_petugas' => $uniquesIdPetugas,
+                'nama_petugas' => $faker->name,
+                'username' => $faker->userName,
+                'password' => 'password',
+                'telp' => $faker->phoneNumber,
+                'level' => $faker->randomElement(['admin', 'petugas']),
+            ]);
+        }
     }
 }

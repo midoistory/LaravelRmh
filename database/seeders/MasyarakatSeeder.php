@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class MasyarakatSeeder extends Seeder
 {
@@ -14,13 +13,19 @@ class MasyarakatSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $faker = Faker::create();
+
+        foreach (range(1, 3) as $index) {
+            // membuat nilai nik yang unik
+            $uniqueNik = $faker->unique()->numerify('###########');
+
             DB::table('masyarakats')->insert([
-            'nik'   => STR::random(16),
-            'nama'  => STR::random(35),
-            'username'  => STR::random(25),
-            'password'  => STR::random(32),
-            'telp'  => STR::random(13),
-        ]);
+                'nik' => $uniqueNik,
+                'nama' => $faker->name,
+                'username' => $faker->userName,
+                'password' => 'password',
+                'telp' => $faker->phoneNumber,
+            ]);
+        }
     }
 }
