@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('siswa', function (Blueprint $table) {
+        Schema::create('siswas', function (Blueprint $table) {
             $table->char('nisn', 10)->primary();
             $table->char('nis', 8);
             $table->string('nama', 35);
-            $table->foreignId('id_kelas')->references('id_kelas')->on('kelas');
+            $table->foreignId('id_kelas')->references('id_kelas')->on('kelass');
             $table->text('alamat');
             $table->string('telp', 13);
-            $table->foreignId('id_spp')->references('id_spp')->on('spp');
+            $table->foreignId('id_spp')->references('id_spp')->on('spps');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('siswa');
+        Schema::dropIfExists('siswas');
     }
 };

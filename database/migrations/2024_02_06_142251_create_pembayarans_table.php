@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pembayaran', function (Blueprint $table) {
+        Schema::create('pembayarans', function (Blueprint $table) {
             $table->id('id_pembayaran');
-            $table->foreignId('id_petugas')->references('id_petugas')->on('petugas');
+            $table->foreignId('id_petugas')->references('id_petugas')->on('petugass');
             $table->char('nisn', 10);
             $table->foreign('nisn')->references('nisn')->on('siswa');
             $table->date('tgl_bayar');
             $table->string('bulan_bayar', 8);
             $table->string('tahun_bayar', 4);
-            $table->foreignId('id_spp')->references('id_spp')->on('spp');
+            $table->foreignId('id_spp')->references('id_spp')->on('spps');
             $table->integer('jumlah_bayar');
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pembayaran');
+        Schema::dropIfExists('pembayarans');
     }
 };
