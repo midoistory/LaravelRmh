@@ -18,8 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/master', 'layout.master');
-
+Route::get('/dashboard', function() {
+    return view('dashboard');
+})->name('dashboard');
 
 // route untuk mengelola spp controller
 Route::controller(SppController::class)->group(function(){

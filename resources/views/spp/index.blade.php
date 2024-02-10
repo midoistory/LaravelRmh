@@ -1,6 +1,6 @@
-@extends('layout.master')
+@extends('dividing.app')
 
-@section('header', 'Data Spp')
+@section('heading', 'Data Spp')
 
 @section('content')
     @if ($message = Session::get('success'))
@@ -9,50 +9,48 @@
             <strong>{{ $message }}</strong>
         </div>
     @endif
-    <div class="container-fluid">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <a href="{{ route('spp.create') }}" class="btn btn-primary">
-                    <i class="fa fa-plus"></i> SPP<br>
-                </a>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="table" width="100%" cellspacing="0">
-                        <thead>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a href="{{ route('spp.create') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i> SPP<br>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="table" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID SPP</th>
+                            <th>TAHUN</th>
+                            <th>NOMINAL</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($spps->slice(0, 10) as $key => $value)
                             <tr>
-                                <th>ID SPP</th>
-                                <th>TAHUN</th>
-                                <th>NOMINAL</th>
-                                <th>ACTION</th>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $value->tahun }}</td>
+                                <td>{{ $value->nominal }}</td>
+                                <td>
+                                    <form action="{{ route('spp.delete', $value->id_spp) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="{{ route('spp.show', $value->id_spp) }}"
+                                            class="btn btn-sm btn-primary">Detail</a>
+                                        <a href="{{ route('spp.edit', $value->id_spp) }}"
+                                            class="btn btn-sm btn-warning">Edit</a>
+                                        <button type="submit" class="btn btn-sm btn-danger my-1">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($spps->slice(0, 10) as $key => $value)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $value->tahun }}</td>
-                                    <td>{{ $value->nominal }}</td>
-                                    <td>
-                                        <form action="{{ route('spp.delete', $value->id_spp) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a href="{{ route('spp.show', $value->id_spp) }}"
-                                                class="btn btn-sm btn-primary">Detail</a>
-                                            <a href="{{ route('spp.edit', $value->id_spp) }}"
-                                                class="btn btn-sm btn-warning">Edit</a>
-                                            <button type="submit" class="btn btn-sm btn-danger my-1">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4">Data Masih Kosong</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
+                        @empty
+                            <tr>
+                                <td colspan="4">Data Masih Kosong</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
