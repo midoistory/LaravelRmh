@@ -5,18 +5,18 @@
 @section('content')
     <div class="card shadow mb-4 col-sm-12 border-left-primary py-2">
         <div class="card-body">
-            <form action="{{ route('spp.update', ['id' => $sppsEdit->id_spp]) }}" method="POST">
+            <form action="{{ route('spp.update', ['spp' => $spp->id_spp]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="nama">Tahun</label>
+                    <label for="tahun">Tahun</label>
                     <input type="number" name="tahun" class="form-control @error('nama') {{ 'is-invalid' }} @enderror"
-                        value="{{ $sppsEdit->tahun }}" required>
+                        value="{{ $spp->tahun }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="nama">Nominal</label>
+                    <label for="nominal">Nominal</label>
                     <input type="number" name="nominal" class="form-control @error('nama') {{ 'is-invalid' }} @enderror"
-                        value="{{ $sppsEdit->nominal }}" required>
+                        value="{{ $spp->nominal }}" required>
                 </div>
                 @error('tahun')
                     <span class="error invalid-feedback" style="display: inline">{{ $message }}</span>

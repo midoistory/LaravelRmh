@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Spp;
+use App\Http\Requests\StoreSppRequest;
+use App\Http\Requests\UpdateSppRequest;
 
 class SppController extends Controller
 {
@@ -12,9 +13,7 @@ class SppController extends Controller
      */
     public function index()
     {
-        //fetching data dari tabel spp
-        $spps = DB::table('spps')->get();
-        //return ke view dan kirimkan data $spp
+        $spps = Spp::select('id_spp', 'tahun', 'nominal')->get();
         return view('spp.index', compact('spps'));
     }
 
@@ -29,65 +28,44 @@ class SppController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSppRequest $request)
     {
-        $request->validate([
-            'tahun' => 'required|digits:4',
-            'nominal' => 'required|min:5',
-        ]);
-
-        // Query untuk menyimpan data
-        $query = DB::table('spps')->insert([
-            'tahun' => $request['tahun'],
-            'nominal' => $request['nominal'],
-        ]);
-
-        // Redirect ke halaman yang sesuai dengan pesan sukses
-        return redirect()->route('spp.index')->with(['success' => 'Data berhasil disimpan!']);
+        $spp = Spp::create($request->all());
+        return redirect()->route('spp.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Spp $spp)
     {
-        $sppsShow = DB::table('spps')->where('id_spp', $id)->first();
-        return view("spp.show", compact('sppsShow'));
+        return view('spp.show', compact('spp'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Spp $spp)
     {
-        $sppsEdit = DB::table('spps')->where('id_spp', $id)->first();
-        return view("spp.edit", compact('sppsEdit'));
+        return view('spp.edit', compact('spp'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateSppRequest $request, Spp $spp)
     {
-        $request->validate([
-            'tahun' => 'required|digits:4',
-            'nominal' => 'required|min:5',
-        ]);
-
-        DB::table('spps')->where('id_spp', $id)->update([
-            'tahun' => $request['tahun'],
-            'nominal' => $request['nominal'],
-        ]);
-
-        return redirect()->route('spp.index')->with(['Success' => 'Data berhasil di update']);
+        $spp->update($request->all());
+        return redirect()->route('spp.index')->with('success', 'Data berhasil diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Spp $spp)
     {
-        $sppsDelete = DB::table('spps')->where('id_spp', $id)->delete();
-        return redirect()->route('spp.index')->with(['success' => 'Data berhasil dihapus!']);
+        $spp->delete();
+        return redirect()->route('spp.index')
+        ->with('success', 'Data berhasil di hapus');
     }
 }
