@@ -29,14 +29,14 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('petugas.index') }}">
                     <i class="fa-solid fa-user-tag"></i>
                     <span>Petugas</span></a>
             </li>
 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('kelas.index') }}">
                     <i class="fa-solid fa-landmark"></i>
                     <span>Kelas</span></a>
             </li>

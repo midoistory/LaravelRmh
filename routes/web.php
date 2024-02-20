@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SppController;
-
+use App\Http\Controllers\KelassController;
+use App\Http\Controllers\PetugassController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +24,5 @@ Route::get('/dashboard', function() {
 })->name('dashboard');
 
 Route::resource('/spp', SppController::class);
+Route::resource('/kelas', KelassController::class);
+Route::resource('/petugas', PetugassController::class);

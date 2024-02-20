@@ -10,12 +10,12 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="tahun">Tahun</label>
-                    <input type="number" name="tahun" class="form-control @error('nama') {{ 'is-invalid' }} @enderror"
+                    <input type="number" name="tahun" class="form-control @error('tahun') {{ 'is-invalid' }} @enderror"
                         value="{{ $spp->tahun }}" required>
                 </div>
                 <div class="form-group">
                     <label for="nominal">Nominal</label>
-                    <input type="number" name="nominal" class="form-control @error('nama') {{ 'is-invalid' }} @enderror"
+                    <input type="number" name="nominal" class="form-control @error('nominal') {{ 'is-invalid' }} @enderror"
                         value="{{ $spp->nominal }}" required>
                 </div>
                 @error('tahun')
