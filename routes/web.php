@@ -7,6 +7,8 @@ use App\Http\Controllers\{
     PetugassController,
     SppController,
     RegisterController,
+    AuthController,
+    DashboardController,
 };
 
 /*
@@ -27,6 +29,18 @@ Route::get('/', function () {
 Route::get('/dashboard', function() {
     return view('dashboard');
 })->name('dashboard');
+
+Route::controller(AuthController::class)->group(function(){
+    Route::get('/login', 'login')->name('auth.login');
+    Route::post('/authenticate', 'authenticate')->name('auth.authenticate');
+    Route::post('/logout', 'logout')->name('auth.logout');
+});
+
+Route::controller(DashboardController::class)->group(function(){
+    Route::get('/dashboard/admin', 'admin')->name('dashboard.admin');
+    Route::post('/dashboard/petugas', 'petugas')->name('dashboard.petugas');
+    Route::post('/dashboard/siswa', 'siswa')->name('dashboard.siswa');
+});
 
 Route::resource('/petugas', PetugassController::class);
 Route::resource('/kelas', KelassController::class);
