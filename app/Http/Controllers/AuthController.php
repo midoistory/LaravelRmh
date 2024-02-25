@@ -16,7 +16,13 @@ class AuthController extends Controller
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
             $request->session()->regenerate();
-            return view('dashboard.admin');
+            if (auth()->user()->role_id == 1){
+                return redirect()->route('dashboard.admin');
+            } elseif (auth()->user()->role_id == 2) {
+                return redirect()->route('dashboard.petugas');
+            } else {
+                return redirect()->route('dashboard.siswa');
+            }
         }
 
         return back()->withErrors([

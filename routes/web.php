@@ -30,23 +30,32 @@ Route::get('/dashboard', function() {
     return view('dashboard');
 })->name('dashboard');
 
-Route::controller(AuthController::class)->group(function(){
-    Route::get('/login', 'login')->name('auth.login');
-    Route::post('/authenticate', 'authenticate')->name('auth.authenticate');
-    Route::post('/logout', 'logout')->name('auth.logout');
+Route::middleware(['guest'])->group(function() {
+    Route::controller(AuthController::class)->group(function(){
+        Route::get('/login', 'login')->name('auth.login');
+        Route::post('/authenticate', 'authenticate')->name('auth.authenticate');
+    });
+
+    Route::controller(RegisterController::class)->group(function(){
+    Route::get('/register', 'create')->name('register.create');
+    Route::post('/register', 'store')->name('register.store');
+});
 });
 
-Route::controller(DashboardController::class)->group(function(){
-    Route::get('/dashboard/admin', 'admin')->name('dashboard.admin');
-    Route::post('/dashboard/petugas', 'petugas')->name('dashboard.petugas');
-    Route::post('/dashboard/siswa', 'siswa')->name('dashboard.siswa');
+Route::middleware(['can:isAdmin'])->group(function() {
+    Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
 });
+
+Route::middleware(['can:isPetugas'])->group(function() {
+    Route::get('/dashboard/petugas', [DashboardController::class, 'petugas'])->name('dashboard.petugas');
+});
+
+Route::middleware(['can:isSiswa'])->group(function() {
+    Route::get('/dashboard/siswa', [DashboardController::class, 'siswa'])->name('dashboard.siswa');
+});
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
 
 Route::resource('/petugas', PetugassController::class);
 Route::resource('/kelas', KelassController::class);
 Route::resource('/spp', SppController::class);
-
-Route::controller(RegisterController::class)->group(function(){
-    Route::get('/register', 'create')->name('register.create');
-    Route::post('/register', 'store')->name('register.store');
-});
