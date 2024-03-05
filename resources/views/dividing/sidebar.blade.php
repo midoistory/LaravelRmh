@@ -23,7 +23,7 @@
 
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html" id="siswaLink">
+                <a class="nav-link" href="{{ route('siswa.index') }}">
                     <i class="fa-solid fa-user-graduate"></i>
                     <span>Siswa</span></a>
             </li>

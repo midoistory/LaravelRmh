@@ -1,6 +1,6 @@
 @extends('dividing.app')
 
-@section('heading', 'Data Petugas')
+@section('heading', 'Data Siswa')
 
 @section('content')
     @if (session('success'))
@@ -10,8 +10,8 @@
     @endif
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="{{ route('petugas.create') }}" class="btn btn-primary">
-                <i class="fa fa-plus"></i>PETUGAS<br>
+            <a href="{{ route('siswa.create') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>SISWA<br>
             </a>
         </div>
         <div class="card-body">
@@ -19,27 +19,31 @@
                 <table class="table table-bordered" id="table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID PETUGAS</th>
-                            <th>USERNAME</th>
-                            <th>PASSWORD</th>
-                            <th>NAMA PETUGAS</th>
-                            <th>LEVEL</th>
+                            <th>NISN</th>
+                            <th>NIS</th>
+                            <th>NAMA</th>
+                            <th>ID KELAS</th>
+                            <th>ALAMAT</th>
+                            <th>NOMOR TELEPON</th>
+                            <th>ID SPP</th>
                             <th>ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($petugass as $key => $value)
+                        @forelse ($siswas as $key => $value)
                             <tr>
-                                <td>{{ $value->id_petugas }}</td>
-                                <td>{{ $value->username }}</td>
-                                <td>{{ $value->password }}</td>
-                                <td>{{ $value->nama_petugas }}</td>
-                                <td>{{ $value->level }}</td>
+                                <td>{{ $value->nisn }}</td>
+                                <td>{{ $value->nis }}</td>
+                                <td>{{ $value->nama }}</td>
+                                <td>{{ $value->id_kelas }}</td>
+                                <td>{{ $value->alamat }}</td>
+                                <td>{{ $value->telp }}</td>
+                                <td>{{ $value->id_spp }}</td>
                                 <td>
-                                    <form action="{{ route('petugas.destroy', $value->id_petugas) }}" method="POST">
-                                        <a href="{{ route('petugas.show', $value->id_petugas) }}"
+                                    <form action="{{ route('siswa.destroy', $value->nisn) }}" method="POST">
+                                        <a href="{{ route('siswa.show', $value->nisn) }}"
                                             class="btn btn-sm btn-primary">Detail</a>
-                                        <a href="{{ route('petugas.edit', $value->id_petugas) }}"
+                                        <a href="{{ route('siswa.edit', $value->nisn) }}"
                                             class="btn btn-sm btn-warning">Edit</a>
                                         @csrf
                                         @method('DELETE')

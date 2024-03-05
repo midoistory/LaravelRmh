@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     KelassController,
     PetugassController,
     SppController,
+    SiswasController,
     RegisterController,
     AuthController,
     DashboardController,
@@ -59,3 +60,4 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->
 Route::resource('/petugas', PetugassController::class);
 Route::resource('/kelas', KelassController::class);
 Route::resource('/spp', SppController::class);
+Route::resource('/siswa', SiswasController::class);
