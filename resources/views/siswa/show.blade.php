@@ -11,13 +11,13 @@
             <br>
             NAMA : {{ $siswa->nama }}
             <br>
-            ID KELAS : {{ $siswa->id_kelas }}
+            KELAS : {{ $siswa->kelas->nama_kelas }}
             <br>
             ALAMAT : {{ $siswa->alamat }}
             <br>
             NOMOR TELEPON : {{ $siswa->telp }}
             <br>
-            ID SPP : {{ $siswa->id_spp }}
+            TAHUN SPP : {{ $siswa->spp->tahun }}
             <br>
         </div>
     </div>

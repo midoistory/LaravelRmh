@@ -35,7 +35,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="level">Level</label>
+                    <label for="level">Pilih Level</label>
                     <select name="level" class="form-control @error('level') is-invalid @enderror" id="level">
                         <option value="Admin" {{ old('level') === 'Admin' ? 'selected' : '' }}>Admin</option>
                         <option value="Petugas" {{ old('level') === 'Petugas' ? 'selected' : '' }}>Petugas</option>

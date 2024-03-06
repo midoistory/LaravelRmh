@@ -35,9 +35,15 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="id_kelas">ID Kelas</label>
-                    <input name="id_kelas" type="number" class="form-control @error('id_kelas') is-invalid @enderror"
-                        id="id_kelas" placeholder="Ketik Id Kelas" value="{{ old('id_kelas') }}">
+                    <label for="id_kelas">Kelas</label>
+                    <select name="id_kelas" class="form-control @error('id_kelas') is-invalid @enderror">
+                        <option value="">Pilih Kelas</option>
+                        @foreach ($kelasList as $id_kelas => $nama_kelas)
+                            <option value="{{ $id_kelas }}" {{ old('id_kelas') == $id_kelas ? 'selected' : '' }}>
+                                {{ $nama_kelas }}
+                            </option>
+                        @endforeach
+                    </select>
                     @error('id_kelas')
                         <span class="error invalid-feedback"
                             style="display: inline-block; font-size: 12px; color: red;">{{ $message }}</span>
@@ -62,9 +68,15 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="id_spp">Id Spp</label>
-                    <input name="id_spp" type="number" class="form-control @error('id_spp') is-invalid @enderror"
-                        id="id_spp" placeholder="Ketik Nomor Telepon" value="{{ old('id_spp') }}">
+                    <label for="id_spp">TAHUN SPP</label>
+                    <select name="id_spp" class="form-control @error('id_spp') is-invalid @enderror">
+                        <option value="">Pilih Tahun Spp</option>
+                        @foreach ($sppList as $id_spp => $tahun)
+                            <option value="{{ $id_spp }}" {{ old('id_spp') == $tahun ? 'selected' : '' }}>
+                                {{ $tahun }}
+                            </option>
+                        @endforeach
+                    </select>
                     @error('id_spp')
                         <span class="error invalid-feedback"
                             style="display: inline-block; font-size: 12px; color: red;">{{ $message }}</span>

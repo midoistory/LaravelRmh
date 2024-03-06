@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswas;
+use App\Models\{
+    Siswas,
+    Kelass,
+    Spp,
+};
 use App\Http\Requests\StoreSiswasRequest;
 use App\Http\Requests\UpdateSiswasRequest;
 
@@ -22,7 +26,10 @@ class SiswasController extends Controller
      */
     public function create()
     {
-        return view('siswa.create');
+        $kelasList = Kelass::pluck('nama_kelas', 'id_kelas');
+        $sppList = Spp::pluck('tahun', 'id_spp');
+
+        return view('siswa.create', compact('kelasList', 'sppList'));
     }
 
     /**
@@ -47,9 +54,11 @@ class SiswasController extends Controller
      */
     public function edit(Siswas $siswa)
     {
-        return view('siswa.edit', compact('siswa'));
-    }
+        $kelasList = Kelass::pluck('nama_kelas', 'id_kelas');
+        $sppList = Spp::pluck('tahun', 'id_spp');
 
+        return view('siswa.edit', compact('siswa', 'kelasList', 'sppList'));
+    }
     /**
      * Update the specified resource in storage.
      */

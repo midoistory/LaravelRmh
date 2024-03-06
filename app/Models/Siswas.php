@@ -13,4 +13,15 @@ class Siswas extends Model
     protected $fillable = [
         'nisn', 'nis', 'nama', 'id_kelas', 'alamat', 'telp', 'id_spp'
     ];
+    
+    public function kelas()
+    {
+        return $this->belongsTo(Kelass::class, 'id_kelas', 'id_kelas');
+    }
+
+    public function spp()
+    {
+        return $this->belongsTo(Spp::class, 'id_spp', 'id_spp');
+    }
 }
+

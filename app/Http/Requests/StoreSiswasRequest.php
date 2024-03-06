@@ -25,10 +25,10 @@ class StoreSiswasRequest extends FormRequest
             'nisn' => 'required|integer|min:10',
             'nis' => 'required|integer|min:8',
             'nama' => 'required|string',
-            'id_kelas' => 'required|integer',
+            'id_kelas' => 'required',
             'alamat' => 'required|string',
             'telp' => 'required|string|min:11',
-            'id_spp' => 'required|integer',
+            'id_spp' => 'required',
         ];
     }
 }
