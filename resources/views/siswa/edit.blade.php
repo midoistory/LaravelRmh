@@ -69,7 +69,7 @@
                             </option>
                         @endforeach
                     </select>
-                    @error('id_kelas')
+                    @error('id_spp')
                         <span class="error invalid-feedback"
                             style="display: inline-block; font-size: 12px; color: red;">{{ $message }}</span>
                     @enderror

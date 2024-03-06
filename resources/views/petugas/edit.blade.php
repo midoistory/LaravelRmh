@@ -5,33 +5,34 @@
 @section('content')
     <div class="card shadow mb-4 col-sm-12 border-left-primary py-2">
         <div class="card-body">
-            <form action="{{ route('petugas.update', ['petuga' => $petuga->id_petugas]) }}" method="POST">
+            <form action="{{ route('petugas.store') }}" method="POST">
                 @csrf
-                @method('PUT')
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input name="username" type="text" class="form-control @error('username') {{ 'is-invalid' }} @enderror"
-                        id="username" placeholder="Nama Petugas" value="{{ $petuga->username }}">
+                    <input name="username" type="text" class="form-control @error('username') is-invalid @enderror"
+                        placeholder="Ketik Username" value="{{ old('username') }}">
                     @error('username')
-                        <span class="error invalid-feedback" style="display: inline;">{{ $message }}</span>
+                        <span class="error invalid-feedback"
+                            style="display: inline-block; font-size: 12px; color: red;">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input name="password" type="text"
-                        class="form-control @error('password') {{ 'is-invalid' }} @enderror" id="password"
-                        placeholder="Nama Petugas" value="{{ $petuga->password }}">
+                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        id="password" placeholder="Ketik password" value="{{ old('password') }}">
                     @error('password')
-                        <span class="error invalid-feedback" style="display: inline;">{{ $message }}</span>
+                        <span class="error invalid-feedback"
+                            style="display: inline-block; font-size: 12px; color: red;">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="nama_petugas">Nama Petugas</label>
                     <input name="nama_petugas" type="text"
-                        class="form-control @error('nama_petugas') {{ 'is-invalid' }} @enderror" id="nama_petugas"
-                        placeholder="Nama Petugas" value="{{ $petuga->nama_petugas }}">
+                        class="form-control @error('nama_petugas') is-invalid @enderror" id="nama_petugas"
+                        placeholder="Ketik Nama Petugas" value="{{ old('nama_petugas') }}">
                     @error('nama_petugas')
-                        <span class="error invalid-feedback" style="display: inline;">{{ $message }}</span>
+                        <span class="error invalid-feedback"
+                            style="display: inline-block; font-size: 12px; color: red;">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -45,7 +46,8 @@
                             style="display: inline-block; font-size: 12px; color: red;">{{ $message }}</span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
             </form>
         </div>
     </div>

@@ -59,6 +59,7 @@ class SiswasController extends Controller
 
         return view('siswa.edit', compact('siswa', 'kelasList', 'sppList'));
     }
+    
     /**
      * Update the specified resource in storage.
      */

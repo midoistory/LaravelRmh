@@ -1,6 +1,6 @@
 @extends('dividing.app')
 
-@section('heading', 'Detail Data Siswas')
+@section('heading', 'Detail Data Siswa')
 
 @section('content')
     <div class="card shadow mb-4 col-sm-12 border-left-primary py-2">

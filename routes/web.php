@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     PetugassController,
     SppController,
     SiswasController,
+    PembayaransController,
     RegisterController,
     AuthController,
     DashboardController,
@@ -61,3 +62,4 @@ Route::resource('/petugas', PetugassController::class);
 Route::resource('/kelas', KelassController::class);
 Route::resource('/spp', SppController::class);
 Route::resource('/siswa', SiswasController::class);
+Route::resource('/pembayaran', PembayaransController::class);

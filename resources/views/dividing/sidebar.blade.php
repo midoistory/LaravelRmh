@@ -48,7 +48,7 @@
             </li>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('pembayaran.index') }}">
                     <i class="fa-solid fa-wallet"></i>
                     <span>Pembayaran</span></a>
             </li>
