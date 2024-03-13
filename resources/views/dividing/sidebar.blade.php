@@ -57,7 +57,7 @@
 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('transaksi.index') }}">
                     <i class="fa-solid fa-receipt"></i>
                     <span>Transaksi</span></a>
             </li>
