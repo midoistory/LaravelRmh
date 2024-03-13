@@ -40,17 +40,33 @@
                     <i class="fa-solid fa-landmark"></i>
                     <span>Kelas</span></a>
             </li>
+
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('spp.index') }}">
                     <i class="fa-solid fa-scroll"></i>
                     <span>SPP</span></a>
             </li>
+
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('pembayaran.index') }}">
-                    <i class="fa-solid fa-wallet"></i>
+                    <i class="fa-solid fa-money-bill-wave"></i>
                     <span>Pembayaran</span></a>
+            </li>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span>Transaksi</span></a>
+            </li>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Histori Pembayaran</span></a>
             </li>
 
             <!-- Divider -->

@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tgl_bayar">Tanggal Bayar</label>
-                    <input name="tgl_bayar" type="date" class="form-control @error('tgl_bayar') is-invalid @enderror"
+                    <input name="tgl_bayar" type="text" class="form-control @error('tgl_bayar') is-invalid @enderror"
                         id="tgl_bayar" placeholder="Tanggal Bayar" value="{{ old('tgl_bayar') }}">
                     @error('tgl_bayar')
                         <span class="error invalid-feedback"

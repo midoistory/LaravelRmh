@@ -24,7 +24,7 @@ class StorePembayaranRequest extends FormRequest
         return [
             'id_petugas' => 'required',
             'nisn' => 'required',
-            'tgl_bayar' => 'required|date',
+            'tgl_bayar' => 'required|integer',
             'bulan_bayar' => 'required|string',
             'tahun_bayar'   => 'required|integer|min:4',
             'id_spp' => 'required',

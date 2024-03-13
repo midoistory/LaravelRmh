@@ -11,11 +11,7 @@
             <br>
             NAMA SISWA : {{ $pembayaran->siswa->nama }}
             <br>
-            TANGGAL BAYAR : {{ $pembayaran->tgl_bayar }}
-            <br>
-            BULAN BAYAR : {{ $pembayaran->bulan_bayar }}
-            <br>
-            TAHUN BAYAR : {{ $pembayaran->tahun_bayar }}
+            TANGGAL / BULAN / TAHUN BAYAR : {{ $pembayaran->tgl_bayar }} / {{ $pembayaran->bulan_bayar }} / {{ $pembayaran->tahun_bayar }}
             <br>
             TAHUN SPP : {{ $pembayaran->spp->tahun }}
             <br>

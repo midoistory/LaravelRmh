@@ -18,13 +18,11 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="table" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
+                        <tr style="font-size: 12px;">
                             <th>ID PEMBAYARAN</th>
                             <th>ID PETUGAS</th>
                             <th>NISN</th>
-                            <th>TANGGAL BAYAR</th>
-                            <th>BULAN BAYAR</th>
-                            <th>TAHUN BAYAR</th>
+                            <th>TANGGAL / BULAN / TAHUN BAYAR</th>
                             <th>ID SPP</th>
                             <th>JUMLAH BAYAR</th>
                             <th>ACTION</th>
@@ -36,9 +34,7 @@
                                 <td>{{ $value->id_pembayaran }}</td>
                                 <td>{{ $value->id_petugas }}</td>
                                 <td>{{ $value->nisn }}</td>
-                                <td>{{ $value->tgl_bayar }}</td>
-                                <td>{{ $value->bulan_bayar }}</td>
-                                <td>{{ $value->tahun_bayar }}</td>
+                                <td>{{ $value->tgl_bayar }} / {{ $value->bulan_bayar }} / {{ $value->tahun_bayar }}</td>
                                 <td>{{ $value->id_spp }}</td>
                                 <td>{{ $value->jumlah_bayar }}</td>
                                 <td>
